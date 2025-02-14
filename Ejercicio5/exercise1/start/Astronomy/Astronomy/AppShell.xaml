@@ -5,13 +5,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Astronomy.Pages"
     FlyoutIcon="moon.png">
+    
+    
+    <FlyoutItem Title="Astronomy" Icon="moon.png">
+        <ShellContent Title="Moon Phase" Icon="moon.png"
+            ContentTemplate="{DataTemplate local:MoonPhasePage}"/>
 
-    <TabBar>
-        <Tab Title="Moon Phase" Icon="moon.png">
-            <ShellContent ContentTemplate="{DataTemplate local:MoonPhasePage}" />
-        </Tab>
-        <Tab Title="Sunrise" Icon="sun.png">
-            <ShellContent ContentTemplate="{DataTemplate local:SunrisePage}"/>
-        </Tab>
-    </TabBar>
+        <ShellContent Title="Sunrise" Icon="sun.png"
+            ContentTemplate="{DataTemplate local:SunrisePage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="About" Icon="question.png">
+        <ShellContent
+            ContentTemplate="{DataTemplate local:AboutPage}"/>
+    </FlyoutItem>
 </Shell>
