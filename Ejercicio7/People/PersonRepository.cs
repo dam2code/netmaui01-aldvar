@@ -11,9 +11,8 @@ public class PersonRepository
 
     // TODO: Add variable for the SQLite connection
 
-    private void Init()
+    private async Task Init()
     {
-        // TODO: Add code to initialize the repository     
         
             if (conn != null)
                 return;
@@ -28,13 +27,13 @@ public class PersonRepository
         _dbPath = dbPath;                        
     }
 
-    public void AddNewPerson(string name)
+    public SynchronizationContext Task AddNewPerson(string name)
     {            
         int result = 0;
         try
         {
             // TODO: Call Init()
-            Init();
+           await Init();
 
 
             // basic validation to ensure a name was entered
@@ -42,7 +41,7 @@ public class PersonRepository
                 throw new Exception("Valid name required");
 
             // TODO: Insert the new person into the database
-            result = conn.Insert(new Person { Name = name });
+            result = await conn.InsertAsync(new Person { Name = name });
 
             StatusMessage = string.Format("{0} record(s) added (Name: {1})", result, name);
         }
